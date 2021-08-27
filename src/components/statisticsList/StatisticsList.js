@@ -1,40 +1,53 @@
 import PropTypes from 'prop-types';
-import {
-    item,
-    title,
-    good,
-    bad,
-} from './StatisticsList.module.css';
+import StatListItem from '../StatListItem';
+// import {
+//     item,
+//     title,
+//     goodStat,
+//     badStat,
+// } from './StatisticsList.module.css';
 
 const StatisticsList = ({
-    statTarget,
-    keysArr,
+    good,
+    bad,
+    neutral,
     totalReviews,
     positive,
 }) => {
     return (
         <div>
             <ul>
-                {keysArr.map(key => (
-                    <li key={key} className={item}>
-                        <span className={title}>{key}:</span>
-                        <span>{statTarget[key]}</span>
-                    </li>
-                ))}
-                <li className={item}>
-                    <span className={title}>Total:</span>
-                    <span>{totalReviews}</span>
-                </li>
+                <StatListItem label={'Good'} value={good} />
+                <StatListItem label={'Bad'} value={bad} />
+                <StatListItem
+                    label={'Neutral'}
+                    value={neutral}
+                />
+
+                <StatListItem
+                    label={'Total'}
+                    value={totalReviews}
+                />
+
+                <StatListItem
+                    label={' Positive percentage'}
+                    value={`${positive}%`}
+                />
+                {/* 
                 <li className={item}>
                     <span className={title}>
                         Positive percentage:
                     </span>
                     {positive > 50 ? (
-                        <span className={good}>{positive}%</span>
+                        <span className={goodStat}>
+                            {positive}%
+                        </span>
                     ) : (
-                        <span className={bad}>{positive}%</span>
+                        <span className={badStat}>
+                            {positive}%
+                        </span>
                     )}
-                </li>
+                </li> */}
             </ul>
         </div>
     );
